@@ -39,7 +39,7 @@
   
 **A high-performance, multi-tenant network proxy management platform engineered for edge deployment on Cloudflare Workers and D1 Serverless SQL.**
 
-[Key Features](#️-features) • [Deployment Guide](#-quick-deployment-guide) • [IP Scanner](#-clean-ip-scanner) • [SOCKS5 Proxy](#️-build-your-own-socks5-proxy-zeus-relay) • [Donate](#-donate--support) • [Credits](#️-credits--copyright)
+[Key Features](#️-features) • [Deployment Guide](#-quick-deployment-guide) • [IP Scanner](#-clean-ip-scanner) • [SOCKS5 Proxy](#️-build-your-own-socks5-proxy-zeus-relay) • [Donate](#-donate--support) • [Credits](#️-License)
 
 </div>
 
