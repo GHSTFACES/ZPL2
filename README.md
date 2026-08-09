@@ -177,6 +177,13 @@ powershell -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::Security
 
 ## Star History
 
+<a href="https://www.star-history.com/?repos=panel-zeus%2FZ-E-U-S&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=panel-zeus/Z-E-U-S&type=date&theme=dark&legend=top-left&sealed_token=KaNTFs54S3xkBDLutPPMRxXHWbt33rgVkpsPR3IsWF7BxrS2HYrjcPUJ3-AlXysAW6n8ULAWO3-4m_koovdyFrULmjHoCYXax95fpPQM8go2fhZZpd1Ykw" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=panel-zeus/Z-E-U-S&type=date&legend=top-left&sealed_token=KaNTFs54S3xkBDLutPPMRxXHWbt33rgVkpsPR3IsWF7BxrS2HYrjcPUJ3-AlXysAW6n8ULAWO3-4m_koovdyFrULmjHoCYXax95fpPQM8go2fhZZpd1Ykw" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=panel-zeus/Z-E-U-S&type=date&legend=top-left&sealed_token=KaNTFs54S3xkBDLutPPMRxXHWbt33rgVkpsPR3IsWF7BxrS2HYrjcPUJ3-AlXysAW6n8ULAWO3-4m_koovdyFrULmjHoCYXax95fpPQM8go2fhZZpd1Ykw" />
+ </picture>
+</a>
 
 ---
 
