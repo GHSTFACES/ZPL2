@@ -1,4 +1,5 @@
 
+
 <div align="center">
   
 # ⚡ ZEUS PANEL
@@ -74,7 +75,7 @@
 </a>
 
 <div align="center">
-First, log into your Cloudflare dashboard. Ensure you are using a verified email address (avoid temporary/fake emails), then proceed with one of the deployment methods below.
+First, log into your Cloudflare dashboard. Ensure you are using a verified email address (avoid temporary/fake emails), then proceed with the deployment method below.
 </div>
 
 <br>
@@ -87,7 +88,7 @@ First, log into your Cloudflare dashboard. Ensure you are using a verified email
 
 <br>
 
-## 🤖 Method 1: Deploy via Telegram Bot (Recommended)
+## 🤖  Deploy via Telegram Bot 
 
 1. 🌐 Access the **[ZEUS Telegram Bot](https://t.me/ZEUS_PANEL_BOT)** and click `Start`.
 2. 👤 From the main menu, click on **"➕ Register Cloudflare Account"**.
@@ -95,26 +96,6 @@ First, log into your Cloudflare dashboard. Ensure you are using a verified email
 4. 🟦 Scroll to the bottom of the Cloudflare page, click the blue `Continue to summary` button, and then click `Create Token`.
 5. 🔑 Copy the generated token and **send it directly in the bot chat**.
 6. ⚡️ Once the token is verified, return to the main menu, click **"🚀 Build New Panel"**, and select your account. Your D1 database and panel will be automatically deployed.
-
----
-
-<div align="center">
-
-<a href="https://zeus-panel.ir-netlify.workers.dev/paneI" target="_blank">
-<img src="https://img.shields.io/badge/Launch_Zeus_Panel-Deployer_Site-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Deploy Zeus" height="40">
-</a>
-
-</div>
-
-<br>
-
-## 🌐 Method 2: Deploy via Web Installer
-
-1. 🌐 Access the **[Web Deployer Site](https://zeus-panel.ir-netlify.workers.dev/paneI)**.
-2. 🟧 Click the orange **"Get Token"** button to be redirected to your Cloudflare account.
-3. 🟦 Similar to the previous method, scroll to the bottom of the page, click the blue `Continue to summary` button, confirm the token creation, and copy the code.
-4. 🔑 Return to the Deployer site and paste the copied token into the input field.
-5. ⚡️ Click the green **"Build Panel"** button and wait for your panel to be fully deployed.
 
 ---
 
