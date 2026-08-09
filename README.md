@@ -39,7 +39,7 @@
   
 **A high-performance, multi-tenant network proxy management platform engineered for edge deployment on Cloudflare Workers and D1 Serverless SQL.**
 
-[Key Features](#️-features) • [Deployment Guide](#-quick-deployment-guide) • [IP Scanner](#-clean-ip-scanner) • [SOCKS5 Proxy](#️-build-your-own-socks5-proxy-zeus-relay) • [Donate](#-donate--support) • [Credits](#️-License-&-Copyright)
+[Key Features](#️-features) • [Deployment Guide](#-quick-deployment-guide) • [IP Scanner](#-clean-ip-scanner) • [SOCKS5 Proxy](#️-build-your-own-socks5-proxy-zeus-relay) • [Donate](#-donate--support) • [License & Copyright](#license-copyright) • [Credits](#credits-section)
 
 </div>
 
@@ -180,7 +180,7 @@ Open **Command Prompt (CMD)** in Windows, paste the following command, and hit E
 
 ---
 
-## ⚖️ License & Copyright
+## <a id="license-copyright"></a>⚖️ License & Copyright
 
 **Copyright (c) 2026 ZEUS PANEL Contributors. All Rights Reserved.**
 
@@ -194,7 +194,7 @@ The source code is published solely for transparency and personal deployment. Fo
 
 ---
 
-## Credits
+## <a id="credits-section"></a>Credits
 This panel was originally conceptualized and authored by Arad and Morgan. The current version represents an extended, highly optimized, and heavily refactored iteration of that core logic.
 
 * **Original Authors:** The baseline concept and initial framework belong to [AG-Morgan](https://github.com/AG-Morgan) and [aradava](https://github.com/aradava).
