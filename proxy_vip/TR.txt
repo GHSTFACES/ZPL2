@@ -1,0 +1,2 @@
+socks5://amir:amir1234@212.87.199.175:1080
+socks5://pwwpfxwx:rrUmeetNbSca@45.74.159.134:2080

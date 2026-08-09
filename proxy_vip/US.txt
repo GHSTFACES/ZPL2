@@ -1,0 +1,2 @@
+socks5://divbx7tb:8vq2ep9apg4h@mymind.wolvorine.kdns.fr:17103
+socks5://xcihrumw:ts1EVET8Pm9n@104.167.199.86:1080
