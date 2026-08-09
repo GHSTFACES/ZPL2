@@ -9,10 +9,10 @@
 [![Telegram](https://img.shields.io/badge/Community-PANEL__ZEUS-2CA5E0.svg?style=for-the-badge&logo=telegram)](https://t.me/PANEL_ZEUS)
 </div>
 
-<img  src="https://raw.githubusercontent.com/zeus-panel/ZEUS-PANEL/refs/heads/main/photos/dark.png"  width="100%"  alt="Zeus Panel Dark Mode"  style="border-radius: 12px; margin-bottom: 15px;">
+<img  src="https://raw.githubusercontent.com/panel-zeus/Z-E-U-S/refs/heads/main/photos/dark.png"  width="100%"  alt="Zeus Panel Dark Mode"  style="border-radius: 12px; margin-bottom: 15px;">
 
   
-<img  src="https://raw.githubusercontent.com/zeus-panel/ZEUS-PANEL/refs/heads/main/photos/add.png"  width="100%"  alt="Zeus Panel Dark Mode"  style="border-radius: 12px; margin-bottom: 15px;">
+<img  src="https://raw.githubusercontent.com/panel-zeus/Z-E-U-S/refs/heads/main/photos/add.png"  width="100%"  alt="Zeus Panel Dark Mode"  style="border-radius: 12px; margin-bottom: 15px;">
 
   
 
@@ -22,13 +22,13 @@
 
 <td width="50%" valign="middle" align="center">
 
-<img  src="https://raw.githubusercontent.com/zeus-panel/ZEUS-PANEL/refs/heads/main/photos/bot.jpg"  width="100%"  alt="Zeus Panel Status"  style="border-radius: 12px;">
+<img  src="https://raw.githubusercontent.com/panel-zeus/Z-E-U-S/refs/heads/main/photos/bot.jpg"  width="100%"  alt="Zeus Panel Status"  style="border-radius: 12px;">
 
 </td>
 
 <td width="50%" valign="middle" align="center">
 
-<img  src="https://raw.githubusercontent.com/zeus-panel/ZEUS-PANEL/refs/heads/main/photos/status.png"  width="100%"  alt="Zeus Panel Dark Mode"  style="border-radius: 12px;">
+<img  src="https://raw.githubusercontent.com/panel-zeus/Z-E-U-S/refs/heads/main/photos/status.png"  width="100%"  alt="Zeus Panel Dark Mode"  style="border-radius: 12px;">
 
 </td>
 
