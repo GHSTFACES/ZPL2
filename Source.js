@@ -857,7 +857,7 @@ const Router = {
 			}
 		}
 		if (url.pathname === "/api/test-proxy" && request.method === "POST") {
-			const { proxy } = await readJsonBody(request);
+			const { proxy, skip_country } = await readJsonBody(request);
 			if (!proxy) return new Response(JSON.stringify({ error: "پـروکـسـی وارد نشده است" }), { status: 400, headers: { "Content-Type": "application/json" } });
 			try {
 				let ip = "";
@@ -878,8 +878,10 @@ const Router = {
 				}
 				let country = "UN";
 				const startTime = Date.now();
-				const payload = new TextEncoder().encode("GET /json/?fields=countryCode HTTP/1.1\r\nHost: ip-api.com\r\nConnection: close\r\n\r\n");
-				const s = await connectProxy(proxy, "ip-api.com", 80, payload);
+				let targetHost = skip_country ? "1.1.1.1" : "ip-api.com";
+				let reqPath = skip_country ? "/" : "/json/?fields=countryCode";
+				const payload = new TextEncoder().encode("GET " + reqPath + " HTTP/1.1\r\nHost: " + targetHost + "\r\nConnection: close\r\n\r\n");
+				const s = await connectProxy(proxy, targetHost, 80, payload);
 				const reader = s.readable.getReader();
 				let resStr = "";
 				const dec = new TextDecoder();
@@ -893,7 +895,11 @@ const Router = {
 						const res = await reader.read();
 						if (res.done || !res.value) break;
 						resStr += dec.decode(res.value, { stream: true });
-						if (resStr.includes("countryCode")) break;
+						if (skip_country) {
+							if (resStr.includes("HTTP/1.")) break;
+						} else {
+							if (resStr.includes("countryCode")) break;
+						}
 					}
 				} finally {
 					clearTimeout(timeoutId);
@@ -905,16 +911,18 @@ const Router = {
 					throw new Error("تایم‌اوت در دریافت دیتا");
 				}
 				const ping = Date.now() - startTime;
-				try {
-					const jsonMatch = resStr.match(/\{[^}]*"countryCode"\s*:\s*"([^"]+)"[^}]*\}/);
-					if (jsonMatch && jsonMatch[1]) country = jsonMatch[1];
-				} catch (e) {}
-				if (country === "UN" && ip) {
+				if (!skip_country) {
 					try {
-						const geoRes = await fetch(`http://ip-api.com/json/${ip}?fields=countryCode`);
-						const geoData = await geoRes.json();
-						if (geoData && geoData.countryCode) country = geoData.countryCode;
+						const jsonMatch = resStr.match(/\{[^}]*"countryCode"\s*:\s*"([^"]+)"[^}]*\}/);
+						if (jsonMatch && jsonMatch[1]) country = jsonMatch[1];
 					} catch (e) {}
+					if (country === "UN" && ip) {
+						try {
+							const geoRes = await fetch(`http://ip-api.com/json/${ip}?fields=countryCode`);
+							const geoData = await geoRes.json();
+							if (geoData && geoData.countryCode) country = geoData.countryCode;
+						} catch (e) {}
+					}
 				}
 				return new Response(JSON.stringify({ success: true, ping, country }), { headers: { "Content-Type": "application/json" } });
 			} catch (e) {
@@ -4980,60 +4988,52 @@ ${COMMON_TOAST_HTML}
 				const fastestPerCountry = [];
 				const controller = new AbortController();
 
-				const countryPromises = selectedCountries.map(async (country) => {
-					try {
-						const resVip = await fetchWithFallbackUI('proxy_vip/' + country + '.txt?t=' + Date.now());
-						if (!resVip.ok) return null;
-						const text = await resVip.text();
-						let lines = text.split('\\n').map(l => l.trim()).filter(l => l.length > 5);
-						
-						if (lines.length === 0) return null;
+				const findTwoProxiesPromise = new Promise((resolveFast) => {
+					let successCount = 0;
+					const countryPromises = selectedCountries.map(async (country) => {
+						try {
+							const resVip = await fetchWithFallbackUI('proxy_vip/' + country + '.txt?t=' + Date.now());
+							if (!resVip.ok) return;
+							const text = await resVip.text();
+							let lines = text.split('\\n').map(l => l.trim()).filter(l => l.length > 5);
+							if (lines.length === 0) return;
 
-						for (let i = lines.length - 1; i > 0; i--) {
-							const j = Math.floor(Math.random() * (i + 1));
-							[lines[i], lines[j]] = [lines[j], lines[i]];
-						}
+							for (let i = lines.length - 1; i > 0; i--) {
+								const j = Math.floor(Math.random() * (i + 1));
+								[lines[i], lines[j]] = [lines[j], lines[i]];
+							}
 
-						const proxiesToTest = lines.slice(0, 5);
-						let bestProxy = null;
-						let bestPing = 99999;
+							const proxiesToTest = lines.slice(0, 4);
+							const firstSuccessProxy = await Promise.any(proxiesToTest.map(proxyStr => {
+								return new Promise((resolveProxy, rejectProxy) => {
+									fetch('/api/test-proxy', {
+										method: 'POST',
+										headers: { 'Content-Type': 'application/json' },
+										body: JSON.stringify({ proxy: proxyStr, skip_country: true }),
+										signal: controller.signal
+									})
+									.then(res => res.json())
+									.then(data => {
+										if (data.success) resolveProxy({ proxy: proxyStr, ping: data.ping });
+										else rejectProxy();
+									})
+									.catch(rejectProxy);
+								});
+							}));
 
-						const pingPromises = proxiesToTest.map(proxyStr => {
-							return fetch('/api/test-proxy', {
-								method: 'POST',
-								headers: { 'Content-Type': 'application/json' },
-								body: JSON.stringify({ proxy: proxyStr }),
-								signal: controller.signal
-							})
-							.then(res => res.json())
-							.then(data => {
-								if (data.success && data.ping < bestPing) {
-									bestPing = data.ping;
-									bestProxy = proxyStr;
-								}
-							})
-							.catch(() => {});
-						});
-
-						await Promise.all(pingPromises);
-
-						if (bestProxy) {
-							return { proxy: bestProxy, ping: bestPing };
-						}
-					} catch(e) {}
-					return null;
+							if (firstSuccessProxy) {
+								fastestPerCountry.push(firstSuccessProxy);
+								successCount++;
+								if (successCount >= 2) resolveFast();
+							}
+						} catch(e) {}
+					});
+					Promise.allSettled(countryPromises).then(() => resolveFast());
 				});
 
-				const timeoutPromise = new Promise(resolve => setTimeout(() => {
-					controller.abort();
-					resolve();
-				}, 4000));
-
-				await Promise.race([Promise.all(countryPromises).then(results => {
-					results.forEach(res => {
-						if (res) fastestPerCountry.push(res);
-					});
-				}), timeoutPromise]);
+				const timeoutPromise = new Promise(resolve => setTimeout(resolve, 5000));
+				await Promise.race([findTwoProxiesPromise, timeoutPromise]);
+				controller.abort();
 
 				if (fastestPerCountry.length < 2) {
 					alert('خطا: پروکسی سالم از حداقل 2 کشور مختلف در زمان مجاز یافت نشد.');
