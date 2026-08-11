@@ -92,7 +92,7 @@
 </a>
 
 <div align="center">
-First, log into your Cloudflare dashboard. Ensure you are using a verified email address (avoid temporary/fake emails), then proceed with the deployment method below.
+First, log into your Cloudflare dashboard. Ensure you are using a verified email address, then proceed with the deployment method below.
 </div>
 
 <br>
