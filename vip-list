@@ -1,18 +1,9 @@
 [
   {
-    "name": "AD.txt"
-  },
-  {
     "name": "CA.txt"
   },
   {
-    "name": "CU.txt"
-  },
-  {
     "name": "DE.txt"
-  },
-  {
-    "name": "DK.txt"
   },
   {
     "name": "FI.txt"
@@ -24,13 +15,10 @@
     "name": "GB.txt"
   },
   {
-    "name": "GL.txt"
+    "name": "RU.txt"
   },
   {
-    "name": "HK.txt"
-  },
-  {
-    "name": "TG.txt"
+    "name": "SE.txt"
   },
   {
     "name": "TR.txt"
